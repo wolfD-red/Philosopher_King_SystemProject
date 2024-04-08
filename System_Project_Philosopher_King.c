@@ -41,16 +41,23 @@ int choice_checker_chstrint1() {
     int overall_choice;
     char user_input[99];
 
-    do 
+    do
     {
         printf("\nChoice: ");
         fgets(user_input, sizeof(user_input), stdin);
+        fflush (stdin);
 
         if (sscanf(user_input, "%d", &overall_choice) != 1) {
+            if (sscanf(user_input, "%d", &overall_choice) != 1){
+                after_choice_clear ();
+            }
             continue;
         }
 
         if (overall_choice != 1 && overall_choice != 2){
+            if (overall_choice != 1 && overall_choice != 2){
+                after_choice_clear ();
+            }
             continue;
         }
 
@@ -238,7 +245,7 @@ void menu_panel_connector ()
     menu_panel_choice = choice_checker_chstrint1 ();
 
     switch (menu_panel_choice)
-        {
+        { 
             case 1:
                 after_choice_clear ();
                 menu_panel ();
@@ -1488,7 +1495,6 @@ void game_lvl1 ()
     printf ("\n.......................................................................................................\n");    
     printf ("(1) Yes OR (2) No\n");
 }
-
 void game_lvl2 (int lvl2_story_choice_connector, int lvl3_story_choice_connector1, int lvl3_story_choice_connector2, int lvl2_story_choice)
 {
     
